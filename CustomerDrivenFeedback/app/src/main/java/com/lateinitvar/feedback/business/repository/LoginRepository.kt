@@ -6,6 +6,9 @@ class LoginRepository(
     private val loginRemoteDataSource: LoginRemoteDataSource
 ) {
 
-    suspend fun signUpWithEmailAndPassword(email: String, password: String) =
-        loginRemoteDataSource.signUpWithEmailAndPassword(email, password)
+    suspend fun signInWithEmailAndPassword(email: String, password: String) =
+        loginRemoteDataSource.signInWithEmailAndPassword(email, password)
+
+    suspend fun createUserWithEmailAndPassword(email: String, password: String) =
+        loginRemoteDataSource.createUserWithEmailAndPassword(email, password)
 }

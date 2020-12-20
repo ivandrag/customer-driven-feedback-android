@@ -7,6 +7,9 @@ class LoginRemoteDataSource(
     private val firebaseProvider: FirebaseProvider
 ) {
 
-    suspend fun signUpWithEmailAndPassword(email: String, password: String) =
+    suspend fun signInWithEmailAndPassword(email: String, password: String) =
         firebaseProvider.signInWithEmailAndPassword(email, password)
+
+    suspend fun createUserWithEmailAndPassword(email: String, password: String) =
+        firebaseProvider.createUserWithEmailAndPassword(email, password)
 }

@@ -1,5 +1,6 @@
 package com.lateinitvar.feedback.ui.signup
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lateinitvar.feedback.business.usecase.LoginUseCase
@@ -9,13 +10,19 @@ class SignUpViewModel(
     private val loginUseCase: LoginUseCase
 ) : ViewModel() {
 
-    fun signUp(email: String, password: String) = viewModelScope.launch {
-        runCatching {
-            loginUseCase.signUpWithEmailAndPassword(email, password)
-        }.onSuccess {
+    fun signUp(email: String?, password: String?) = viewModelScope.launch {
+        when {
+            email.isNullOrEmpty() -> ""
+            password.isNullOrEmpty() -> ""
+            else -> {
+                runCatching {
+                    loginUseCase.createUserWithEmailAndPassword(email, password)
+                }.onSuccess {
 
-        }.onFailure {
-
+                }.onFailure {
+                    
+                }
+            }
         }
     }
 }

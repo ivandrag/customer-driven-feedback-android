@@ -5,15 +5,21 @@ import android.view.View
 import com.lateinitvar.feedback.R
 import com.lateinitvar.feedback.di.SignUpContainer
 import com.lateinitvar.feedback.ui.BaseFragment
+import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 class SignUpFragment: BaseFragment(R.layout.fragment_sign_up) {
 
-    private lateinit var signUpViewModel: SignUpViewModel
+    private val signUpViewModel: SignUpViewModel by lazy {
+        val signUpContainer = SignUpContainer(appContainer.firebaseProvider)
+        signUpContainer.signUpViewModel
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val signUpContainer = SignUpContainer(appContainer.firebaseProvider)
-        signUpViewModel = signUpContainer.signUpViewModel
+
+        sign_up_button.setOnClickListener {
+            signUpViewModel.signUp(email_edit_text.text.toString(), password_edit_text.text.toString())
+        }
     }
 
     override fun onDestroy() {

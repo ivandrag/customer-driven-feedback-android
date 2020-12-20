@@ -12,4 +12,11 @@ class FirebaseProvider {
         val user = authResult.user
         return User(user?.uid, user?.email, user?.displayName)
     }
+
+    suspend fun createUserWithEmailAndPassword(email: String, password: String): User {
+        val auth = FirebaseAuth.getInstance()
+        val authResult = auth.createUserWithEmailAndPassword(email, password).await()
+        val user = authResult.user
+        return User(user?.uid, user?.email, user?.displayName)
+    }
 }

@@ -23,9 +23,9 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
             findNavController().navigate(R.id.start_sign_up_fragment)
         }
 
-        loginViewModel.onEvent.observe(viewLifecycleOwner, {
-            Toast.makeText(activity, it, Toast.LENGTH_LONG).show()
-        })
+        login_button.setOnClickListener {
+            loginViewModel.login(email_edit_text.text.toString(), password_edit_text.text.toString())
+        }
     }
 
     override fun onDestroy() {

@@ -6,6 +6,9 @@ class LoginUseCase(
     private val loginRepository: LoginRepository
 ) {
 
-    suspend fun signUpWithEmailAndPassword(email: String, password: String) =
-        loginRepository.signUpWithEmailAndPassword(email, password)
+    suspend fun signInWithEmailAndPassword(email: String, password: String) =
+        loginRepository.signInWithEmailAndPassword(email, password)
+
+    suspend fun createUserWithEmailAndPassword(email: String, password: String) =
+        loginRepository.createUserWithEmailAndPassword(email, password)
 }
