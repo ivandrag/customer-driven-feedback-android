@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CustomerDrivenFeedback</string>
+
+    // Login Fragment
+    <string name="email_text">Enter email</string>
+    <string name="password_text">Enter password</string>
+    <string name="sign_up_text">Don\'t have an account?</string>
+    <string name="login_button">Login</string>
 </resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="default_margin_size">16dp</dimen>
+    <dimen name="default_margin_big_size">32dp</dimen>
+    <dimen name="default_padding_size">8dp</dimen>
+</resources>
