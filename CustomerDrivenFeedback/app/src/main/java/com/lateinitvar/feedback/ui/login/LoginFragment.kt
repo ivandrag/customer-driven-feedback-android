@@ -2,7 +2,7 @@ package com.lateinitvar.feedback.ui.login
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.lateinitvar.feedback.R
 import com.lateinitvar.feedback.di.LoginContainer
@@ -16,9 +16,14 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
         loginContainer.loginViewModel
     }
 
+    private val onLoginObserver = Observer<LoginViewModel.OnLoginEvent> {
+        when(it) {
+            is LoginViewModel.OnLoginEvent.Success -> findNavController().navigate(R.id.start_features_fragment)
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         sign_up_text_view.setOnClickListener {
             findNavController().navigate(R.id.start_sign_up_fragment)
         }
@@ -26,10 +31,15 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
         login_button.setOnClickListener {
             loginViewModel.login(email_edit_text.text.toString(), password_edit_text.text.toString())
         }
+        registerObservers()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         appContainer.loginContainer = null
+    }
+
+    private fun registerObservers() {
+        loginViewModel.onEvent.observe(viewLifecycleOwner, onLoginObserver)
     }
 }

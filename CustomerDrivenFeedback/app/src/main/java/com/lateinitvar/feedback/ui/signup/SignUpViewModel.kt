@@ -20,7 +20,7 @@ class SignUpViewModel(
                 }.onSuccess {
 
                 }.onFailure {
-                    
+
                 }
             }
         }

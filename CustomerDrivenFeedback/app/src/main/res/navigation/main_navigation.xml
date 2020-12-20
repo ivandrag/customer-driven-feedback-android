@@ -13,10 +13,19 @@
         <action
             android:id="@+id/start_sign_up_fragment"
             app:destination="@id/sign_up_fragment" />
+
+        <action
+            android:id="@+id/start_features_fragment"
+            app:destination="@id/features_fragment" />
     </fragment>
 
     <fragment
         android:id="@+id/sign_up_fragment"
         android:name="com.lateinitvar.feedback.ui.signup.SignUpFragment"
         tools:layout="@layout/fragment_sign_up" />
+
+    <fragment
+        android:id="@+id/features_fragment"
+        android:name="com.lateinitvar.feedback.ui.features.FeaturesFragment"
+        tools:layout="@layout/fragment_features" />
 </navigation>
