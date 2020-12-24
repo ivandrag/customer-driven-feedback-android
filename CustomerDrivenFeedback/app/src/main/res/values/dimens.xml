@@ -6,4 +6,6 @@
     <dimen name="default_padding_size">8dp</dimen>
     <dimen name="toolbar_height_size">48dp</dimen>
     <dimen name="description_layout_input_size">96dp</dimen>
+    <dimen name="suggested_feature_item_layout_size">100dp</dimen>
+    <dimen name="suggested_feature_item_title_size">17sp</dimen>
 </resources>

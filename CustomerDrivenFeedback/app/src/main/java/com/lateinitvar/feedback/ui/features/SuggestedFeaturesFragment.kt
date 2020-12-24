@@ -13,9 +13,11 @@ import kotlinx.android.synthetic.main.toolbar.add_image_view
 
 class SuggestedFeaturesFragment: BaseFragment(R.layout.fragment_features) {
 
-    private val suggestedFeaturesAdapter: SuggestedFeaturesAdapter by lazy {
-        SuggestedFeaturesAdapter()
-    }
+    private lateinit var suggestedFeaturesAdapter: SuggestedFeaturesAdapter
+
+//    private val suggestedFeaturesAdapter: SuggestedFeaturesAdapter by lazy {
+//        SuggestedFeaturesAdapter()
+//    }
 
     private val suggestedFeaturesViewModel: SuggestedFeaturesViewModel by lazy {
         val featureContainer = FeaturesContainer(appContainer.firebaseProvider)
@@ -34,6 +36,7 @@ class SuggestedFeaturesFragment: BaseFragment(R.layout.fragment_features) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        suggestedFeaturesAdapter = SuggestedFeaturesAdapter()
         setToolbarTitle(getString(R.string.suggested_features_toolbar_title_text))
         suggestedFeaturesViewModel.onEvent.observe(viewLifecycleOwner, onEventObserver)
         add_image_view?.visibility = View.VISIBLE

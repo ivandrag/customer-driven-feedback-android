@@ -1,13 +1,12 @@
 package com.lateinitvar.feedback.ui.features
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.lateinitvar.feedback.R
 import com.lateinitvar.feedback.business.model.SuggestedFeature
-import kotlinx.android.extensions.LayoutContainer
 
 class SuggestedFeaturesAdapter : RecyclerView.Adapter<SuggestedFeaturesAdapter.ParentHolder>() {
 
@@ -29,11 +28,15 @@ class SuggestedFeaturesAdapter : RecyclerView.Adapter<SuggestedFeaturesAdapter.P
 
     override fun getItemCount() = allSuggestedFeatures.size
 
-    class ParentHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),
-        LayoutContainer {
+    class ParentHolder(private val containerView: View) : RecyclerView.ViewHolder(containerView) {
 
         fun bindData(suggestedFeature: SuggestedFeature) {
-            Log.d("##TITLE ",  suggestedFeature.title)
+            val titleText = containerView.findViewById<TextView>(R.id.title_text_view)
+            val descriptionText = containerView.findViewById<TextView>(R.id.description_text_view)
+            val totalVotesText = containerView.findViewById<TextView>(R.id.total_votes_text_view)
+            titleText.text = suggestedFeature.title
+            descriptionText.text = suggestedFeature.description
+            totalVotesText.text = suggestedFeature.totalVotes.toString()
         }
     }
 }

@@ -1,21 +1,19 @@
 package com.lateinitvar.feedback.ui.features
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lateinitvar.feedback.business.model.SuggestedFeature
 import com.lateinitvar.feedback.business.usecase.FeatureUseCase
+import com.lateinitvar.feedback.utils.SingleLiveEvent
 import kotlinx.coroutines.launch
 
 class SuggestedFeaturesViewModel(
     private val featureUseCase: FeatureUseCase
 ) : ViewModel() {
 
-    private val _onEvent = MutableLiveData<OnEvent>()
+    private val _onEvent = SingleLiveEvent<OnEvent>()
 
-    val onEvent: LiveData<OnEvent>
+    val onEvent: SingleLiveEvent<OnEvent>
         get() = _onEvent
 
     fun getAllSuggestedFeatures() = viewModelScope.launch {

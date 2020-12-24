@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/default_margin_size"
+    android:background="@color/colorWhite"
+    android:padding="@dimen/default_padding_size">
+
+    <TextView
+        android:id="@+id/title_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="@dimen/suggested_feature_item_title_size"
+        android:layout_marginTop="@dimen/default_margin_size"
+        app:layout_constraintStart_toEndOf="@+id/total_votes_text_view"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Functionality feature" />
+
+    <TextView
+        android:id="@+id/description_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/total_votes_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/title_text_view"
+        tools:text="Description of the functionality" />
+
+    <TextView
+        android:id="@+id/total_votes_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:drawableTopCompat="@drawable/ic_baseline_arrow_up"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
