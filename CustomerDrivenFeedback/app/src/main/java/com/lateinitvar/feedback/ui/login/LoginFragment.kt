@@ -8,6 +8,12 @@ import com.lateinitvar.feedback.R
 import com.lateinitvar.feedback.di.LoginContainer
 import com.lateinitvar.feedback.ui.BaseFragment
 import kotlinx.android.synthetic.main.fragment_login.*
+import com.lateinitvar.feedback.ui.login.LoginViewModel.OnLoginEvent
+import com.lateinitvar.feedback.ui.login.LoginViewModel.OnLoginEvent.Success
+import com.lateinitvar.feedback.ui.login.LoginViewModel.OnLoginEvent.Error
+import com.lateinitvar.feedback.ui.login.LoginViewModel.OnLoginEvent.EmailIsNullOrEmpty
+import com.lateinitvar.feedback.ui.login.LoginViewModel.OnLoginEvent.PasswordIsNullOrEmpty
+import com.lateinitvar.feedback.ui.login.LoginViewModel.OnLoginEvent.IsLoggedIn
 
 class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
@@ -16,20 +22,27 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
         loginContainer.loginViewModel
     }
 
-    private val onLoginObserver = Observer<LoginViewModel.OnLoginEvent> {
-        when(it) {
-            is LoginViewModel.OnLoginEvent.Success -> findNavController().navigate(R.id.start_features_fragment)
+    private val onLoginObserver = Observer<OnLoginEvent> {
+        when (it) {
+            is IsLoggedIn, Success -> findNavController().navigate(R.id.start_features_fragment)
+            is Error -> ""
+            is EmailIsNullOrEmpty -> ""
+            is PasswordIsNullOrEmpty -> ""
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loginViewModel.getCurrentUser()
         sign_up_text_view.setOnClickListener {
             findNavController().navigate(R.id.start_sign_up_fragment)
         }
 
         login_button.setOnClickListener {
-            loginViewModel.login(email_edit_text.text.toString(), password_edit_text.text.toString())
+            loginViewModel.login(
+                email_edit_text.text.toString(),
+                password_edit_text.text.toString()
+            )
         }
         registerObservers()
     }

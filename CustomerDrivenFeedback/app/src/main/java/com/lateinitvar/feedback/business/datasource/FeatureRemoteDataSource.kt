@@ -5,4 +5,6 @@ import com.lateinitvar.feedback.business.api.FirebaseProvider
 class FeatureRemoteDataSource(
     private val firebaseProvider: FirebaseProvider
 ) {
+
+    suspend fun getAllSuggestedFeatures() = firebaseProvider.getAllSuggestedFeatures()
 }

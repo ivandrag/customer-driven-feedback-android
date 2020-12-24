@@ -7,6 +7,8 @@ class LoginRemoteDataSource(
     private val firebaseProvider: FirebaseProvider
 ) {
 
+    val currentUser = firebaseProvider.getCurrentUser()
+
     suspend fun signInWithEmailAndPassword(email: String, password: String) =
         firebaseProvider.signInWithEmailAndPassword(email, password)
 

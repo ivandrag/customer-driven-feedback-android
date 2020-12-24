@@ -17,6 +17,16 @@ class LoginViewModel(
     val onEvent: LiveData<OnLoginEvent>
         get() = _onEvent
 
+    fun getCurrentUser() = viewModelScope.launch {
+        runCatching {
+            loginUseCase.currentUser
+        }.onSuccess {
+            _onEvent.postValue(OnLoginEvent.IsLoggedIn)
+        }.onFailure {
+            // Not logged in. Do not do anything. User will have to log in.
+        }
+    }
+
     fun login(email: String?, password: String?) = viewModelScope.launch {
         when {
             email.isNullOrEmpty() -> _onEvent.postValue(OnLoginEvent.EmailIsNullOrEmpty)
@@ -34,6 +44,7 @@ class LoginViewModel(
     }
 
     sealed class OnLoginEvent {
+        object IsLoggedIn : OnLoginEvent()
         object Success : OnLoginEvent()
         object Error: OnLoginEvent()
         object EmailIsNullOrEmpty: OnLoginEvent()

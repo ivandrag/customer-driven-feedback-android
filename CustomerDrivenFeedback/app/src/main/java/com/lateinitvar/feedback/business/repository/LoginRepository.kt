@@ -6,6 +6,8 @@ class LoginRepository(
     private val loginRemoteDataSource: LoginRemoteDataSource
 ) {
 
+    val currentUser = loginRemoteDataSource.currentUser ?: throw Exception("No available current user")
+
     suspend fun signInWithEmailAndPassword(email: String, password: String) =
         loginRemoteDataSource.signInWithEmailAndPassword(email, password)
 

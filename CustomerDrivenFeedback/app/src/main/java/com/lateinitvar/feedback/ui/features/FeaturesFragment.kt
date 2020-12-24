@@ -15,7 +15,7 @@ class FeaturesFragment: BaseFragment(R.layout.fragment_features) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        featuresViewModel.getAllFeatures()
+        featuresViewModel.getAllSuggestedFeatures()
     }
 
     override fun onDestroy() {

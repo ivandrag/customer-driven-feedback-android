@@ -1,13 +1,21 @@
 package com.lateinitvar.feedback.ui.features
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.lateinitvar.feedback.business.usecase.FeatureUseCase
+import kotlinx.coroutines.launch
 
 class FeaturesViewModel(
     private val featureUseCase: FeatureUseCase
-): ViewModel() {
+) : ViewModel() {
 
-    fun getAllFeatures() {
+    fun getAllSuggestedFeatures() = viewModelScope.launch {
+        runCatching {
+            featureUseCase.getAllSuggestedFeatures()
+        }.onSuccess {
 
+        }.onFailure {
+
+        }
     }
 }

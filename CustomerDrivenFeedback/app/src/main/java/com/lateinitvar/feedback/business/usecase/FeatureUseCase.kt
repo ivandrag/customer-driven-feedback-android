@@ -5,4 +5,5 @@ import com.lateinitvar.feedback.business.repository.FeatureRepository
 class FeatureUseCase(
     private val featureRepository: FeatureRepository
 ) {
+    suspend fun getAllSuggestedFeatures() = featureRepository.getAllSuggestedFeatures()
 }
