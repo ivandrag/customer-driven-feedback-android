@@ -16,4 +16,10 @@
 
     // All Suggested Features
     <string name="suggested_features_toolbar_title_text">Suggested features</string>
+
+    // Add Features
+    <string name="add_feature_toolbar_title_text">Request new feature</string>
+    <string name="add_feature_title_text">Enter a short &amp; descriptive title</string>
+    <string name="add_feature_description_text">Explain any other details</string>
+    <string name="add_feature_button_text">Submit suggestion</string>
 </resources>

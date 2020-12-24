@@ -6,4 +6,8 @@ class AddFeatureUseCase(
     private val addFeatureRepository: AddFeatureRepository
 ) {
 
+    suspend fun submitSuggestion(title: String, description: String) {
+        addFeatureRepository.submitSuggestion(title, description)
+    }
 }
+
