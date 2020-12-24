@@ -33,6 +33,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setToolbarTitle(getString(R.string.login_toolbar_title_text))
         loginViewModel.getCurrentUser()
         sign_up_text_view.setOnClickListener {
             findNavController().navigate(R.id.start_sign_up_fragment)

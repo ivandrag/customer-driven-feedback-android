@@ -26,6 +26,6 @@
 
     <fragment
         android:id="@+id/features_fragment"
-        android:name="com.lateinitvar.feedback.ui.features.FeaturesFragment"
+        android:name="com.lateinitvar.feedback.ui.features.SuggestedFeaturesFragment"
         tools:layout="@layout/fragment_features" />
 </navigation>

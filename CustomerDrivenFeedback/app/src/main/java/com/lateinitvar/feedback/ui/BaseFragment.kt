@@ -10,4 +10,8 @@ abstract class BaseFragment(@LayoutRes layout: Int): Fragment(layout) {
     val appContainer: AppContainer by lazy {
         (activity?.application as? MainApplication)?.appContainer ?: throw Exception("App container cannot be null")
     }
+
+    fun setToolbarTitle(value: String) {
+        (activity as MainActivity).setToolbarTitle(value)
+    }
 }

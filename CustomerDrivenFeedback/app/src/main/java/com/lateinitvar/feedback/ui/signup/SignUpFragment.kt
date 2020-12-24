@@ -16,7 +16,7 @@ class SignUpFragment: BaseFragment(R.layout.fragment_sign_up) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setToolbarTitle(getString(R.string.sign_up_toolbar_title_text))
         sign_up_button.setOnClickListener {
             signUpViewModel.signUp(email_edit_text.text.toString(), password_edit_text.text.toString())
         }

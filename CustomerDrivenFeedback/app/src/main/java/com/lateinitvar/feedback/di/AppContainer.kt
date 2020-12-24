@@ -7,7 +7,7 @@ import com.lateinitvar.feedback.business.repository.FeatureRepository
 import com.lateinitvar.feedback.business.repository.LoginRepository
 import com.lateinitvar.feedback.business.usecase.FeatureUseCase
 import com.lateinitvar.feedback.business.usecase.LoginUseCase
-import com.lateinitvar.feedback.ui.features.FeaturesViewModel
+import com.lateinitvar.feedback.ui.features.SuggestedFeaturesViewModel
 import com.lateinitvar.feedback.ui.login.LoginViewModel
 import com.lateinitvar.feedback.ui.signup.SignUpViewModel
 
@@ -36,5 +36,5 @@ class FeaturesContainer(firebaseProvider: FirebaseProvider) {
     private val featureRemoteDataSource = FeatureRemoteDataSource(firebaseProvider)
     private val featureRepository = FeatureRepository(featureRemoteDataSource)
     private val featureUseCase = FeatureUseCase(featureRepository)
-    val featuresViewModel = FeaturesViewModel(featureUseCase)
+    val featuresViewModel = SuggestedFeaturesViewModel(featureUseCase)
 }

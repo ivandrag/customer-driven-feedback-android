@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.lateinitvar.feedback.business.usecase.FeatureUseCase
 import kotlinx.coroutines.launch
 
-class FeaturesViewModel(
+class SuggestedFeaturesViewModel(
     private val featureUseCase: FeatureUseCase
 ) : ViewModel() {
 

@@ -2,13 +2,18 @@
     <string name="app_name">Customer Driven Feedback</string>
 
     // Login Fragment
+    <string name="login_toolbar_title_text">Login</string>
     <string name="email_text">Email</string>
     <string name="password_text">Password</string>
     <string name="sign_up_text">Don\'t have an account?</string>
     <string name="login_button">Login</string>
 
     // Sign Up Fragment
+    <string name="sign_up_toolbar_title_text">Sign up</string>
     <string name="enter_email_text">Enter email</string>
     <string name="enter_password_text">Enter password</string>
     <string name="sign_up_button_text">Sign up</string>
+
+    // All Suggested Features
+    <string name="suggested_features_toolbar_title_text">Suggested features</string>
 </resources>
