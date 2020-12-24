@@ -4,6 +4,7 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import com.lateinitvar.feedback.MainApplication
 import com.lateinitvar.feedback.di.AppContainer
+import kotlinx.android.synthetic.main.toolbar.toolbar_title_text_view
 
 abstract class BaseFragment(@LayoutRes layout: Int): Fragment(layout) {
 
@@ -12,6 +13,6 @@ abstract class BaseFragment(@LayoutRes layout: Int): Fragment(layout) {
     }
 
     fun setToolbarTitle(value: String) {
-        (activity as MainActivity).setToolbarTitle(value)
+        toolbar_title_text_view?.text = value
     }
 }

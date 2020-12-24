@@ -27,5 +27,16 @@
     <fragment
         android:id="@+id/features_fragment"
         android:name="com.lateinitvar.feedback.ui.features.SuggestedFeaturesFragment"
-        tools:layout="@layout/fragment_features" />
+        tools:layout="@layout/fragment_features">
+
+        <action
+            android:id="@+id/start_add_feature_fragment"
+            app:destination="@id/add_feature_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_feature_fragment"
+        android:name="com.lateinitvar.feedback.ui.add.AddFeatureFragment"
+        tools:layout="@layout/fragment_add_feature" />
 </navigation>

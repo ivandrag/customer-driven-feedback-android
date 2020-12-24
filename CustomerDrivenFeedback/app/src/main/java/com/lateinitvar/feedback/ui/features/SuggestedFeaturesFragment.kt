@@ -2,11 +2,11 @@ package com.lateinitvar.feedback.ui.features
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
+import androidx.navigation.fragment.findNavController
 import com.lateinitvar.feedback.R
 import com.lateinitvar.feedback.di.FeaturesContainer
 import com.lateinitvar.feedback.ui.BaseFragment
-import com.lateinitvar.feedback.ui.MainActivity
+import kotlinx.android.synthetic.main.toolbar.add_image_view
 
 class SuggestedFeaturesFragment: BaseFragment(R.layout.fragment_features) {
 
@@ -18,10 +18,10 @@ class SuggestedFeaturesFragment: BaseFragment(R.layout.fragment_features) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setToolbarTitle(getString(R.string.suggested_features_toolbar_title_text))
-        val addImageView = (activity as MainActivity).findViewById<ImageView>(R.id.add_image_view)
-        addImageView.visibility = View.VISIBLE
-        addImageView.setOnClickListener {
-            
+
+        add_image_view?.visibility = View.VISIBLE
+        add_image_view?.setOnClickListener {
+            findNavController().navigate(R.id.start_add_feature_fragment)
         }
         suggestedFeaturesViewModel.getAllSuggestedFeatures()
     }
