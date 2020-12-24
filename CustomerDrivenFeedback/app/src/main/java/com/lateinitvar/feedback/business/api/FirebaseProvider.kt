@@ -1,9 +1,9 @@
 package com.lateinitvar.feedback.business.api
 
-import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.lateinitvar.feedback.business.model.SuggestedFeature
 import com.lateinitvar.feedback.business.model.User
 import kotlinx.coroutines.tasks.await
 import java.util.UUID
@@ -26,15 +26,27 @@ class FirebaseProvider {
         return User(user?.uid, user?.email, user?.displayName)
     }
 
-    suspend fun getAllSuggestedFeatures() {
-        val documents = Firebase.firestore
+    suspend fun getAllSuggestedFeatures(): List<SuggestedFeature> {
+        val allSuggestedFeatures = mutableListOf<SuggestedFeature>()
+        Firebase.firestore
             .collection("suggested-features")
             .whereEqualTo("key", "fsOOOeNyT8as3o91wuxh0mKWD1k2")
             .get()
-            .await()
-        for (document in documents) {
-            Log.d("##RESULT ", document.data.toString())
-        }
+            .addOnSuccessListener {
+                it.documents.map {
+                    allSuggestedFeatures.add(
+                        SuggestedFeature(
+                            it["id"] as String,
+                            it["key"] as String,
+                            it["title"] as String,
+                            it["description"] as String,
+                            it["totalVotes"] as Long
+                        )
+                    )
+                }
+            }.await()
+
+        return allSuggestedFeatures
     }
 
     suspend fun submitSuggestion(title: String, description: String) {
@@ -45,6 +57,10 @@ class FirebaseProvider {
             "description" to description,
             "totalVotes" to 0
         )
-        Firebase.firestore.collection("suggested-features").document().set(feature).await()
+        Firebase.firestore
+            .collection("suggested-features")
+            .document()
+            .set(feature)
+            .await()
     }
 }

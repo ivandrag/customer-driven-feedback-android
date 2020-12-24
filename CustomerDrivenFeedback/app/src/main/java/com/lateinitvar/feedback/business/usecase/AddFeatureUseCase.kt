@@ -10,4 +10,3 @@ class AddFeatureUseCase(
         addFeatureRepository.submitSuggestion(title, description)
     }
 }
-

@@ -39,6 +39,11 @@ class AddFeatureFragment: BaseFragment(R.layout.fragment_add_feature) {
         registerObservers()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        appContainer.addFeatureContainer = null
+    }
+
     private fun registerObservers() {
         addFeatureViewModel.onEvent.observe(viewLifecycleOwner, onEvent)
     }
