@@ -39,7 +39,8 @@ class SignUpContainer(firebaseProvider: FirebaseProvider) {
 
 class FeaturesContainer(firebaseProvider: FirebaseProvider) {
     private val featureRemoteDataSource = FeatureRemoteDataSource(firebaseProvider)
-    private val featureRepository = FeatureRepository(featureRemoteDataSource)
+    private val loginRemoteDataSource = LoginRemoteDataSource(firebaseProvider)
+    private val featureRepository = FeatureRepository(loginRemoteDataSource, featureRemoteDataSource)
     private val featureUseCase = FeatureUseCase(featureRepository)
     val featuresViewModel = SuggestedFeaturesViewModel(featureUseCase)
 }

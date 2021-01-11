@@ -6,4 +6,8 @@ class FeatureUseCase(
     private val featureRepository: FeatureRepository
 ) {
     suspend fun getAllSuggestedFeatures() = featureRepository.getAllSuggestedFeatures()
+
+    suspend fun upVote(id: String) {
+        featureRepository.upVote(id)
+    }
 }

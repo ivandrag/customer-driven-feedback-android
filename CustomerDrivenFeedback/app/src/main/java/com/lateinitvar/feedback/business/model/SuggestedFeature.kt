@@ -5,5 +5,6 @@ data class SuggestedFeature(
     val key: String,
     val title: String,
     val description: String,
-    val totalVotes: Long
+    val totalVotes: Long,
+    val hasVoted: List<String>
 )

@@ -2,6 +2,7 @@ package com.lateinitvar.feedback.ui.login
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.lateinitvar.feedback.R
@@ -25,7 +26,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
     private val onLoginObserver = Observer<OnLoginEvent> {
         when (it) {
             is IsLoggedIn, Success -> findNavController().navigate(R.id.start_features_fragment)
-            is Error -> ""
+            is Error -> Toast.makeText(activity, "Not logged in", Toast.LENGTH_SHORT).show()
             is EmailIsNullOrEmpty -> ""
             is PasswordIsNullOrEmpty -> ""
         }
@@ -34,7 +35,6 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setToolbarTitle(getString(R.string.login_toolbar_title_text))
-        loginViewModel.getCurrentUser()
         sign_up_text_view.setOnClickListener {
             findNavController().navigate(R.id.start_sign_up_fragment)
         }
@@ -46,6 +46,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
             )
         }
         registerObservers()
+        loginViewModel.getCurrentUser()
     }
 
     override fun onDestroy() {

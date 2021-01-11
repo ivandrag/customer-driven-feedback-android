@@ -7,4 +7,8 @@ class FeatureRemoteDataSource(
 ) {
 
     suspend fun getAllSuggestedFeatures() = firebaseProvider.getAllSuggestedFeatures()
+
+    suspend fun upVote(id: String, userId: String) {
+        firebaseProvider.updateTotalVotes(suggestedFeatureId = id, userId = userId)
+    }
 }

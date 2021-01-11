@@ -6,6 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.lateinitvar.feedback.business.usecase.LoginUseCase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
@@ -19,11 +21,11 @@ class LoginViewModel(
 
     fun getCurrentUser() = viewModelScope.launch {
         runCatching {
-            loginUseCase.currentUser
+           loginUseCase.currentUser ?: throw Exception("No available current user")
         }.onSuccess {
             _onEvent.postValue(OnLoginEvent.IsLoggedIn)
         }.onFailure {
-            // Not logged in. Do not do anything. User will have to log in.
+            _onEvent.postValue(OnLoginEvent.Error)
         }
     }
 
